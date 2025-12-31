@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Internship at Cognifyz Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Container utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction Section */
+        .intro {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .intro h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .highlights h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+
+        .highlight-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .highlight-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Qualifications Section */
+        .qualifications {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 2rem 0;
+        }
+
+        .qualifications .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .qualifications h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Job Details Section */
+        .job-details {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .job-details .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job-details h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-item h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #555;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .highlight-card {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🔷 Cognifyz</div>
+            <div>
+                <a href="#about">About</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#apply">Apply</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Web Developer Internship Opportunities at Cognifyz Technologies</h1>
+            <p>Launch Your Career with Real-World Experience & Expert Mentorship</p>
+            <a href="#apply" class="cta-button">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro" id="about">
+        <div class="container">
+            <h2>About This Internship</h2>
+            <p>Join Cognifyz Technologies as a Web Developer Intern and gain hands-on experience building cutting-edge web applications. This is a remote, flexible internship designed for aspiring developers who want to make an impact while learning from industry experts.</p>
+            <p><strong>Program Duration:</strong> Flexible timeline based on your availability and commitment level. Start immediately and grow with us!</p>
+            <p><strong>Work Environment:</strong> 100% remote with flexible work timings, allowing you to balance your education, personal projects, and professional growth.</p>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights" id="benefits">
+        <div class="container">
+            <h2>Why Join Cognifyz?</h2>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <div class="icon">🚀</div>
+                    <h3>Real-World Experience</h3>
+                    <p>Work on live projects and contribute to production applications. Build a portfolio that impresses employers and showcases your capabilities.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">👨‍💼</div>
+                    <h3>Expert Mentorship</h3>
+                    <p>Learn from experienced developers and industry professionals. Get guidance on best practices, code quality, and professional development.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">💡</div>
+                    <h3>Skill Development</h3>
+                    <p>Master modern web technologies and frameworks. Enhance your problem-solving abilities and learn industry best practices.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">🌐</div>
+                    <h3>Flexible Remote Work</h3>
+                    <p>Work from anywhere with flexible timings. Perfect for students balancing academics and professional growth simultaneously.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">💰</div>
+                    <h3>Competitive Stipend</h3>
+                    <p>Earn ₹5,000 – ₹10,000 per month based on experience and performance. Compensation reflects your contribution and growth.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="icon">📜</div>
+                    <h3>Certificate & References</h3>
+                    <p>Receive a recognized internship certificate and strong references from our team. Boost your resume and credibility in the industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Details Section -->
+    <section class="job-details">
+        <div class="container">
+            <h2>Internship Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>💰 Stipend</h3>
+                    <p>₹5,000 – ₹10,000/month</p>
+                </div>
+                <div class="detail-item">
+                    <h3>📍 Location</h3>
+                    <p>Remote (Work from Anywhere)</p>
+                </div>
+                <div class="detail-item">
+                    <h3>⏰ Work Timings</h3>
+                    <p>Flexible (As per Your Schedule)</p>
+                </div>
+                <div class="detail-item">
+                    <h3>🎓 Eligibility</h3>
+                    <p>Any Qualification</p>
+                </div>
+                <div class="detail-item">
+                    <h3>👨‍💻 Experience</h3>
+                    <p>Fresher to Experienced</p>
+                </div>
+                <div class="detail-item">
+                    <h3>⏳ Application Deadline</h3>
+                    <p>30 December 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifications Section -->
+    <section class="qualifications">
+        <div class="container">
+            <h2>Desired Skills & Technologies</h2>
+            <p style="margin-bottom: 2rem; color: #666;">We're looking for developers with expertise in some of these areas:</p>
+            <div class="skills-grid">
+                <div class="skill-tag">HTML5 & CSS3</div>
+                <div class="skill-tag">JavaScript (ES6+)</div>
+                <div class="skill-tag">React / Vue.js</div>
+                <div class="skill-tag">Node.js & Express</div>
+                <div class="skill-tag">MongoDB / MySQL</div>
+                <div class="skill-tag">REST APIs</div>
+                <div class="skill-tag">Git & GitHub</div>
+                <div class="skill-tag">Responsive Design</div>
+                <div class="skill-tag">Problem Solving</div>
+                <div class="skill-tag">Communication Skills</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="apply">
+        <div class="container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Don't miss this opportunity to grow with Cognifyz Technologies. Apply now and join our team of talented developers!</p>
+            <div class="button-group">
+                <a href="https://lnkd.in/e4aqxUaQ" class="btn-primary">Apply Now</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Cognifyz</h3>
+                    <p>Cognifyz Technologies is where data meets intelligence. We build innovative solutions that transform businesses and empower developers.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#about">About Internship</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#apply">Apply</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: internships@cognifyz.com</p>
+                    <p>LinkedIn: Cognifyz Technologies</p>
+                    <p>Website: www.cognifyz.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cognifyz Technologies. All rights reserved. | Last Date to Apply: 30 December 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
